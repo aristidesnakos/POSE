@@ -20,13 +20,13 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 
 👤 **Player character:**
 
-* 16×16 pixel sprite representing a **human-like figure wearing a cap** (think: simplified Pokémon trainer).
+* 20×20 pixel sprite representing a **human-like figure wearing a cap** (think: simplified Pokémon trainer).
 * Palette: red for the cap, simple white shirt + pants contrast.
 * Simple single-frame sprite with horizontal flip on left/right movement.
 
 🌳 **Environment:**
 
-* **Tile map:** 20×15 grid.
+* **Tile map:** 40×30 grid.
 * Tile types:
 
   * `grass`: Noisy green pixel texture, speckled to feel alive.
