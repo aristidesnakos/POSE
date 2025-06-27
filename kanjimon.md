@@ -21,7 +21,7 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 👤 **Player character:**
 
 * 16×16 pixel sprite representing a **human-like figure wearing a cap** (think: simplified Pokémon trainer).
-* Palette: bright blue or red for the cap, simple shirt + pants contrast.
+* Palette: red for the cap, simple white shirt + pants contrast.
 * Simple single-frame sprite with horizontal flip on left/right movement.
 
 🌳 **Environment:**
@@ -31,14 +31,15 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 
   * `grass`: Noisy green pixel texture, speckled to feel alive.
   * `path`: Light brown / beige tiles with subtle dirt variation.
-  * `trees`: Pixelated trees (8-bit style) bordering the map — chunky, round, classic RPG look, with deep green canopies and brown trunks.
-* The map feels like a small, self-contained park or nature preserve, with meandering paths and grassy clearings.
+  * `trees`: Pixelated trees (8-bit style) sprinkled throughout the map to create a forest like environment — trees are chunky, round, classic RPG look, with deep green canopies and brown trunks.
+* The map feels like a small, self-contained park or nature preserve, with a tic tac toe style path and grassy clearings.
 * Occasional pixelated **flowers** (decorative only) for extra charm.
 
 👾 **Wild Kanji sprites:**
 
 * 16×16 pixel, blocky, mysterious black Kanji with abstract forms — Unown-inspired.
 * Each Kanji has a subtle 2-pixel vertical bobbing animation to look as if floating or pulsing.
+* Kanji are limited in grassy clearnings. 
 
 🌌 **Battle screen:**
 
@@ -49,7 +50,7 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 🖋 **UI text & labels:**
 
 * All text (including “Kanji Captured: X/25”, messages, buttons) uses **Press Start 2P** font.
-* White or light-colored text on dark backgrounds for readability.
+* Light-colored text on dark backgrounds for readability.
 
 ---
 
@@ -57,7 +58,7 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 
 #### 🚶 **State 1: OVERWORLD**
 
-* Top overlay: `"Kanji Captured: X/25"` in Press Start 2P.
+* Top Left overlay: `"Kanji Captured: X/25"` in Press Start 2P.
 * Player moves tile-by-tile via arrow keys.
 * Wild Kanji wander grass tiles randomly (1 tile move per second).
 * Collision (same tile as a Kanji) triggers BATTLE state.
@@ -104,7 +105,8 @@ Your list of 25 **JLPT N5 Kanji** with primary meanings — placed randomly on g
 
 Imagine:
 ✅ A small, lush, pixel-art nature reserve — ringed with **pixelated trees** that form natural borders.
-✅ Winding **paths of dirt** weave through grassy fields, creating exploration zones.
+✅ A tic tac toe style grid of dirt interspersed with grassy fields, creating exploration zones.
 ✅ **Grass tiles** are filled with tiny pixel flecks, giving texture and life.
+✅ One tree is exactly in the center.
 ✅ Decorative **flowers** or tiny rocks add visual richness.
 ✅ The world is compact (fits in a single screen or scrolls minimally), but feels vibrant and alive, just like classic Pokémon starting routes.
