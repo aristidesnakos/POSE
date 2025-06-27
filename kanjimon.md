@@ -15,7 +15,7 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 🎨 **Overall style:**
 
 * High-fidelity 8-bit pixel art, colorful and nostalgic.
-* Mimic Pokémon’s top-down overworld with crisp, bright, and charming tiles.
+* Mimic Pokémon’s classic Game Boy-style pixel art with that distinctive green monochrome palette and detailed tile patterns.
 * Text uses **"Press Start 2P"** font everywhere for authentic retro flavor (embedded via Google Fonts or base64 in CSS).
 
 👤 **Player character:**
