@@ -58,7 +58,7 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the visuals and
 
 #### 🚶 **State 1: OVERWORLD**
 
-* Top Left overlay: `"Kanji Captured: X/25"` in Press Start 2P.
+* Top Center Screen overlay: `"Kanji Captured: X/25"` in Press Start 2P.
 * Player moves tile-by-tile via arrow keys.
 * Wild Kanji wander grass tiles randomly (1 tile move per second).
 * Collision (same tile as a Kanji) triggers BATTLE state.
