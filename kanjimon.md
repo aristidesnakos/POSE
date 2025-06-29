@@ -90,11 +90,11 @@ Your list of 25 **JLPT N5 Kanji** with primary meanings — placed randomly on g
 
 ✅ There's a toggle to show/hide the Kanji -- outside of the map on the top right -- same level as the Kanji counter
 ✅ The world is compact (fits in a single screen or scrolls minimally), but feels vibrant and alive, just like classic Pokémon starting routes.
-✅  The map design is indicated below.
+✅ Map tile layout is provided below.
 
+```
 // Map data (0=grass, 1=path, 2=tree, 3=water, 4=building/structure) 
 this.mapData = [
-
 [0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0],
 [0,0,0,0,0,0,0,1,0,0,2,2,2,2,2,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,1,1,4,0,0,2,2,0,0,0],
 [0,0,2,2,2,2,2,1,0,0,2,1,1,1,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,4,4,4,0,0,2,0,0,0],
@@ -116,6 +116,8 @@ this.mapData = [
 [0,0,0,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3]
 ];
+```
+
 ```
             renderTree(x, y) {
                 // Tree trunk
@@ -202,100 +204,100 @@ this.mapData = [
                 this.ctx.fillRect(x - 2, y + 8, TILE_SIZE + 4, 2); //Roof line 1
                 this.ctx.fillRect(x, y + 16, TILE_SIZE, 2); //Roof line 2
             }
-        
-        renderWater(x, y) {
-		              this.ctx.fillStyle = '#4682b4';
-              		this.ctx.fillRect(x, y, this.TILE_SIZE, this.TILE_SIZE);
-              
-              		// Water effects
-              		this.ctx.fillStyle = '#87ceeb';
-              
-              		for (let i = 0; i < 3; i++) {
-              			this.ctx.fillRect(x + i * 8, y + 4, 6, 2);
-              			this.ctx.fillRect(x + i * 8 + 2, y + 16, 4, 2);
-              			this.ctx.fillRect(x + i * 8 + 4, y + 26, 6, 2);
-              			}
-              		}
 
-        renderPlayer() {
-            const x = this.player.x * this.TILE_SIZE;
-            const y = this.player.y * this.TILE_SIZE;
+           renderWater(x, y) {
+ 	`	this.ctx.fillStyle = '#4682b4';
+		this.ctx.fillRect(x, y, this.TILE_SIZE, this.TILE_SIZE);
+              
+		// Water effects
+		this.ctx.fillStyle = '#87ceeb';
+              
+		for (let i = 0; i < 3; i++) {
+			this.ctx.fillRect(x + i * 8, y + 4, 6, 2);
+			this.ctx.fillRect(x + i * 8 + 2, y + 16, 4, 2);
+			this.ctx.fillRect(x + i * 8 + 4, y + 26, 6, 2);
+			}
+		}
+
+           renderPlayer() {
+		const x = this.player.x * this.TILE_SIZE;
+            	const y = this.player.y * this.TILE_SIZE;
             
-            // Black outlines first (draw behind everything)
-            this.ctx.fillStyle = '#000000';
+            	// Black outlines first (draw behind everything)
+            	this.ctx.fillStyle = '#000000';
             
-            // Head outline
-            this.ctx.fillRect(x + 5, y + 3, 22, 18);
-            // Body outline  
-            this.ctx.fillRect(x + 7, y + 19, 18, 10);
-            // Leg outlines
-            if (this.player.animFrame % 2 === 0) {
-                this.ctx.fillRect(x + 9, y + 28, 6, 4); // Left leg
-                this.ctx.fillRect(x + 17, y + 28, 6, 4); // Right leg
-            } else {
-                this.ctx.fillRect(x + 7, y + 28, 6, 4); // Left leg  
-                this.ctx.fillRect(x + 19, y + 28, 6, 4); // Right leg
-            }
+            	// Head outline
+            	this.ctx.fillRect(x + 5, y + 3, 22, 18);
+            	// Body outline  
+            	this.ctx.fillRect(x + 7, y + 19, 18, 10);
+            	// Leg outlines
+		if (this.player.animFrame % 2 === 0) {
+			this.ctx.fillRect(x + 9, y + 28, 6, 4); // Left leg
+	                this.ctx.fillRect(x + 17, y + 28, 6, 4); // Right leg
+		} else {
+	                this.ctx.fillRect(x + 7, y + 28, 6, 4); // Left leg  
+	                this.ctx.fillRect(x + 19, y + 28, 6, 4); // Right leg
+            	}	
             
-            // Cap (with outline)
-            this.ctx.fillStyle = '#ff0000'; // Red cap like Ash
-            this.ctx.fillRect(x + 6, y + 4, 20, 8);
+		// Cap (with outline)
+		this.ctx.fillStyle = '#ff0000'; // Red cap like Ash
+		this.ctx.fillRect(x + 6, y + 4, 20, 8);
             
-            // Cap visor
-            this.ctx.fillStyle = '#cc0000'; // Darker red for visor
-            this.ctx.fillRect(x + 6, y + 10, 20, 3);
+            	// Cap visor
+            	this.ctx.fillStyle = '#cc0000'; // Darker red for visor
+            	this.ctx.fillRect(x + 6, y + 10, 20, 3);
             
-            // Face
-            this.ctx.fillStyle = '#ffdbac';
-            this.ctx.fillRect(x + 8, y + 8, 16, 12);
+            	// Face
+            	this.ctx.fillStyle = '#ffdbac';
+            	this.ctx.fillRect(x + 8, y + 8, 16, 12);
             
-            // Hair (showing under cap)
-            this.ctx.fillStyle = '#8b4513'; // Brown hair
-            this.ctx.fillRect(x + 7, y + 11, 2, 4);
-            this.ctx.fillRect(x + 23, y + 11, 2, 4);
+            	// Hair (showing under cap)
+            	this.ctx.fillStyle = '#8b4513'; // Brown hair
+            	this.ctx.fillRect(x + 7, y + 11, 2, 4);
+            	this.ctx.fillRect(x + 23, y + 11, 2, 4);
             
-            // Eyes
-            this.ctx.fillStyle = '#000000';
-            this.ctx.fillRect(x + 11, y + 11, 2, 2); // Left eye
-            this.ctx.fillRect(x + 19, y + 11, 2, 2); // Right eye
+            	// Eyes
+            	this.ctx.fillStyle = '#000000';
+            	this.ctx.fillRect(x + 11, y + 11, 2, 2); // Left eye
+            	this.ctx.fillRect(x + 19, y + 11, 2, 2); // Right eye
             
-            // Nose (single pixel)
-            this.ctx.fillStyle = '#000000';
-            this.ctx.fillRect(x + 15, y + 14, 1, 1);
+            	// Nose (single pixel)
+            	this.ctx.fillStyle = '#000000';
+            	this.ctx.fillRect(x + 15, y + 14, 1, 1);
             
-            // Shirt
-            this.ctx.fillStyle = '#4169e1'; // Blue shirt
-            this.ctx.fillRect(x + 8, y + 20, 16, 8);
+            	// Shirt
+            	this.ctx.fillStyle = '#4169e1'; // Blue shirt
+            	this.ctx.fillRect(x + 8, y + 20, 16, 8);
             
-            // Shirt shading
-            this.ctx.fillStyle = '#1e3a8a'; // Darker blue
-            this.ctx.fillRect(x + 8, y + 26, 16, 2);
+            	// Shirt shading
+            	this.ctx.fillStyle = '#1e3a8a'; // Darker blue
+            	this.ctx.fillRect(x + 8, y + 26, 16, 2);
             
-            // Arms
-            this.ctx.fillStyle = '#ffdbac'; // Skin tone
-            this.ctx.fillRect(x + 4, y + 22, 4, 6); // Left arm
-            this.ctx.fillRect(x + 24, y + 22, 4, 6); // Right arm
+            	// Arms
+            	this.ctx.fillStyle = '#ffdbac'; // Skin tone
+            	this.ctx.fillRect(x + 4, y + 22, 4, 6); // Left arm
+            	this.ctx.fillRect(x + 24, y + 22, 4, 6); // Right arm
             
-            // Pants
-            this.ctx.fillStyle = '#2f4f4f'; // Dark pants
-            if (this.player.animFrame % 2 === 0) {
-                this.ctx.fillRect(x + 10, y + 29, 5, 3); // Left leg
-                this.ctx.fillRect(x + 18, y + 29, 5, 3); // Right leg
-            } else {
-                this.ctx.fillRect(x + 8, y + 29, 5, 3); // Left leg
-                this.ctx.fillRect(x + 20, y + 29, 5, 3); // Right leg
-            }
+            	// Pants
+            	this.ctx.fillStyle = '#2f4f4f'; // Dark pants
+            	if (this.player.animFrame % 2 === 0) {
+                	this.ctx.fillRect(x + 10, y + 29, 5, 3); // Left leg
+                	this.ctx.fillRect(x + 18, y + 29, 5, 3); // Right leg
+            	} else {
+                	this.ctx.fillRect(x + 8, y + 29, 5, 3); // Left leg
+                	this.ctx.fillRect(x + 20, y + 29, 5, 3); // Right leg
+            	}
             
-            // Shoes
-            this.ctx.fillStyle = '#000000';
-            if (this.player.animFrame % 2 === 0) {
-                this.ctx.fillRect(x + 9, y + 31, 6, 1); // Left shoe
-                this.ctx.fillRect(x + 17, y + 31, 6, 1); // Right shoe
-            } else {
-                this.ctx.fillRect(x + 7, y + 31, 6, 1); // Left shoe
-                this.ctx.fillRect(x + 19, y + 31, 6, 1); // Right shoe
-            }
-        }
+            	// Shoes
+            	this.ctx.fillStyle = '#000000';
+            	if (this.player.animFrame % 2 === 0) {
+                	this.ctx.fillRect(x + 9, y + 31, 6, 1); // Left shoe
+                	this.ctx.fillRect(x + 17, y + 31, 6, 1); // Right shoe
+            	} else {
+                	this.ctx.fillRect(x + 7, y + 31, 6, 1); // Left shoe
+                	this.ctx.fillRect(x + 19, y + 31, 6, 1); // Right shoe
+            	}
+	}
 ```
 
 ### 6️⃣ **Coding Rules**
