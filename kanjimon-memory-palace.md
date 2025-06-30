@@ -38,9 +38,6 @@ The player explores a vibrant pixel world that resembles a carefully constructed
   - `3`: `renderWater`
   - `4`: `renderBuilding`
   - `F`: `renderFire`
-  - `LB`: `renderMountainLeftBase`
-  - `MB`: `renderMountainMiddleBase`
-  - `RB`: `renderMountainRightBase`
   - `SC`: `renderMountainSnowcap`
   - `R`: `renderRiceField`
   - `P1`: `renderPerson` (static player sprite)
