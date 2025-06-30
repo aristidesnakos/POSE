@@ -64,6 +64,7 @@ The player explores a vibrant pixel world that resembles a carefully constructed
 - White or light-colored text on dark backgrounds for readability.
 - “Kanji Captured: X/10” is located on the top left outside of the Tile map.
 - There's a toggle to show/hide the Kanji -- outside of the tile map on the top right -- same level as the Kanji counter
+- Hint text is in #F43D37.
   
 ###  3️⃣ **Game Mechanics & Flow** 
 #### 🚶 **State 1: OVERWORLD**
@@ -276,6 +277,8 @@ renderMountain(x, y) {
 - renderPerson is essentially a static version of the renderPlayer function, but with a blue cap.
 - Replicate the environment exactly as I have instructed you to do so.
 - All of the Kanji must be rendered.
+- Ensure the hint font is #F43D37.
+- Also ensure the Kanji counter and toggle are outside and top of the game area.
 
 The application itself has the following background style:
 ```
