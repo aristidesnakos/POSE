@@ -4,17 +4,16 @@ You are an excellent and obedient game designer. Replicate the environment exact
 
 ### 1️⃣ **Core Concept**
 
-Design a self-contained **retro 2D pixel-art game**, inspired by the aesthetic of early Pokémon (Game Boy Color era). The player explores a vibrant pixel world and captures **wild Kanji** by correctly identifying their English meanings. They do this by interacting with a map that resembles a carefully constructed memory palace.
-
-Goal: **capture all 10 Kanji** scattered across the world.
+Design a self-contained **retro 2D pixel-art game**, inspired by the aesthetic of early Pokémon (Game Boy Color era). 
+The player explores a vibrant pixel world that resembles a carefully constructed memory palace and captures **wild Kanji** by correctly identifying their English meanings.
 
 📦 **Technical requirement:** 
 ➡ Entire game in a single HTML file with embedded CSS + JavaScript (no external libraries). 
 ➡ Uses `<canvas>` 2D rendering context.
-➡ **Canvas dimensions:** 960x480 pixels (30 tiles wide x 32px, 15 tiles high x 32px).
+➡ **Canvas dimensions:** 960x640 pixels (30 tiles wide x 32px, 20 tiles high x 32px).
 ➡ **TILE_SIZE:** 32 pixels.
 ➡ **Game loop:** 60 FPS using `requestAnimationFrame`.
-➡ **Animation timing:** Kanji bob every 500ms, move every 1000ms.
+➡ **Animation timing:** Kanji bob every 500ms.
 - Follow the exact grid layout specified.
 
 ###  2️⃣ **Visuals & Aesthetics**
@@ -30,7 +29,7 @@ Goal: **capture all 10 Kanji** scattered across the world.
 
 🌳 **Environment:**
 
-- **Tile map:** 30×15 grid.
+- **Tile map:** 30×20 grid.
 - Each tile type is described in section 5️⃣ by corresponding functions.
 - **Tile types:**
   - `0`: `renderGrass`
@@ -53,7 +52,7 @@ Goal: **capture all 10 Kanji** scattered across the world.
 - Kanji can only be found on grass tiles. They can never be superimposed on top of path, trees, or water.
 - Every Kanji has a specific location -- this is a crucial feature of the memory palace.
   
-�🌌 **Battle screen:**
+🌌 **Battle screen:**
 
 - Background: solid dark gray (#333 or similar).
 - Kanji Color: #F43D37
@@ -73,13 +72,6 @@ Goal: **capture all 10 Kanji** scattered across the world.
 #### 🚶 **State 1: OVERWORLD**
 
 - Player moves tile-by-tile via arrow keys.
-- Wild Kanji wander grass tiles randomly (1 tile move per second).
-- **Kanji Movement Logic:**
-  - Choose a random adjacent tile (up/down/left/right).
-  - Only move to grass tiles (type `0`).
-  - Cannot move to tiles occupied by the player or other Kanji.
-  - Stay within map bounds.
-  - If blocked, skip movement for that turn.
 - Collision (same tile as a Kanji) triggers BATTLE state.
 
 #### ⚔ **State 2: BATTLE**
@@ -94,8 +86,9 @@ Goal: **capture all 10 Kanji** scattered across the world.
 - On incorrect entry → error message, try again.
 - There's a `hint` button that a user can press to see what the meaning is.
 - If the Kanji is captured correctly, make sure to account for its allotted points only once.
+- User pressing repetively `Enter` should result in counting the captured kanji only once -- make sure to manage state appropriately.
 
-#### 🏆 **State 3: GAME\_OVER**
+#### 🏆 **State 3: GAME_OVER**
 
 - Trigger: once all 10 Kanji are captured.
 - Display: `"You're a Kanji Master! You've captured them all!"`
@@ -141,28 +134,28 @@ Your list of 10 **JLPT N5 Kanji** with primary meanings — placed randomly on g
 ✅ The world is compact (fits in a single screen or scrolls minimally), but feels vibrant and alive, just like classic Pokémon starting routes.
 ✅ The map design is indicated below. Place the Kanji in the exact positions instructed.
 
-// Map data (0=renderGrass, 1=renderPath, 2=renderTree, 3=renderWater, 4=renderBuilding, F=renderFire, LB=renderMountainLeftBase, MB=renderMountainMiddleBase, RB=renderMountainRightBase, SC=renderMountainSnowcap, R=renderRiceField, P1=renderPerson) 
+// Map data (0=renderGrass, 1=renderPath, 2=renderTree, 3=renderWater, F=renderFire, SC=renderMountainSnowcap, R=renderRiceField, P1=renderPerson, U=renderPerson (user's sprite)) 
 this.mapData = [
-[0,0,2,0,2,2,0,0,2,2,2,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,0,0,0,0],
-[0,0,'一',0,'二',0,0,1,0,'三',0,2,2,2,2,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,2,2,0,0,0],
-[0,0,2,2,2,2,2,1,0,0,2,1,1,1,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0],
-[0,0,2,1,1,1,2,1,0,0,2,1,2,2,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,2,2,0,0,0],
-[0,0,2,1,3,1,2,1,0,0,0,1,0,0,0,0,0,0,0,1,0,3,3,3,3,2,2,0,0,1,1,0,0,0,2,2,0,0,0,0],
-[0,0,2,3,3,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,3,3,2,2,0,1,1,0,0,0,0,0,0,0,0,0,0],
-[0,0,2,2,2,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,3,3,3,3,2,2,0,1,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,2,0,0,1,2,1,0,2,2,2,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,2,1,1,1,2,1,0,2,1,1,1,2,2,0,0,0,0,0,'P1',0,0,0,0,0,0,0,1,0,2,2,2,2,2,2,0,0,0,0],
-[0,0,2,1,0,1,2,1,0,2,2,2,2,2,2,0,0,0,0,0,'人',0,0,0,0,0,0,0,1,0,2,3,3,3,3,2,2,2,2,0],
-[0,0,2,1,0,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,3,3,2,1,1,2,0],
-[0,0,2,1,0,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'R','R',0,0,0,2,2,2,2,2,2,2,1,0,0],
-[0,0,2,1,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,'SC',0,0,0,0,0,'田','R',0,0,0,0,0,0,0,0,1,1,1,0,0],
-[0,0,2,2,2,0,2,1,2,2,2,0,0,0,0,0,0,0,'LB','MB','RB',0,0,0,0,'R','R',0,0,0,0,0,0,0,0,1,0,0,0,0],
-[0,0,3,3,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,'山',0,0,0,口,2,2,2,2,2,2,2,2,2,2,2,1,3,3,3,3],
-[0,0,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3],
-[0,0,0,0,3,3,3,1,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3],
-[0,0,0,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
-[0,0,0,'水',2,2,2,1,0,0,0,2,0,0,0,0,0,0,0,'F',0,0,0,0,0,0,0,0,'川',0,0,0,0,0,0,0,3,2,2,2],
-[0,0,0,0,0,0,0,0,0,0,0,'木',0,0,0,0,0,0,'火',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,2,2,2]
+[0,0,2,0,2,2,0,0,2,2,2,0,0,0,0,0,0,0,3,3,3,0,0,0,0,2,2,2,2,2],
+[0,0,'一',0,'二',0,0,1,0,'三',0,2,2,2,2,0,0,0,0,3,0,0,0,0,0,1,1,0,0,0],
+[0,0,2,2,2,2,2,1,0,0,2,1,1,1,2,0,0,0,0,1,0,0,0,0,0,U,1,0,0,0],
+[0,0,2,1,1,1,2,1,0,0,2,1,2,2,2,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0],
+[0,0,2,1,3,1,2,1,0,0,0,1,0,0,0,0,0,0,0,1,0,3,3,3,3,2,2,1,0,0],
+[0,0,2,3,3,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,3,3,2,2,1,1,0],
+[0,0,2,2,2,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,3,3,3,3,2,2,0,1,0],
+[0,0,2,0,0,1,2,1,0,2,2,2,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
+[0,0,2,1,1,1,2,1,0,2,1,1,1,2,2,0,0,0,0,0,'P1',0,0,0,0,0,0,0,1,0],
+[0,0,2,1,0,1,2,1,0,2,2,2,2,2,2,0,0,0,0,0,'人',0,0,0,0,0,0,0,1,0],
+[0,0,2,1,0,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+[0,0,2,1,0,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'R','R',0,0,0],
+[0,0,2,1,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'田','R',0,0,0],
+[0,0,2,2,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,0,'SC',0,0,0,0,'R','R',0,0,0],
+[0,0,3,3,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,'山',0,0,0,口,2,2,2,2,2,2],
+[0,0,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+[0,0,0,0,3,3,3,1,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,2],
+[0,0,0,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3],
+[0,0,0,'水',2,2,2,1,0,0,0,2,0,0,0,0,0,0,0,'F',0,0,0,0,0,0,0,0,'川',0],
+[0,0,0,0,0,0,0,0,0,0,0,'木',0,0,0,0,0,0,'火',0,0,0,0,0,0,0,0,0,0,0]
 ];
 
 ### **Quick Reference:**
@@ -216,16 +209,36 @@ renderPath(x, y) {
 }
 
 renderTree(x, y) {
+    // Base grass tile
+    this.renderGrass(x, y);
+    // Trunk
     this.ctx.fillStyle = COLORS.tree.trunk;
-    this.ctx.fillRect(x + 12, y + 20, 8, 12); // Trunk
+    this.ctx.fillRect(x + 12, y + 20, 8, 12);
+    // Canopy shadow
+    this.ctx.fillStyle = COLORS.tree.shadow;
+    this.ctx.beginPath();
+    this.ctx.ellipse(x + 16, y + 15, 16, 12, 0, 0, 2 * Math.PI);
+    this.ctx.fill();
+    // Canopy main
     this.ctx.fillStyle = COLORS.tree.canopy;
-    this.ctx.fillRect(x + 0, y + 0, 20, 20); // Canopy
+    this.ctx.beginPath();
+    this.ctx.ellipse(x + 16, y + 12, 15, 11, 0, 0, 2 * Math.PI);
+    this.ctx.fill();
+    // Canopy highlight
+    this.ctx.fillStyle = COLORS.tree.highlight;
+    this.ctx.beginPath();
+    this.ctx.ellipse(x + 18, y + 8, 8, 6, 0, 0, 2 * Math.PI);
+    this.ctx.fill();
 }
 
 renderWater(x, y) {
     this.ctx.fillStyle = COLORS.water.base;
-    this.ctx.fillRect(x, y, 32, 32);
-    // Add wave lines
+    this.ctx.fillRect(x, y, this.TILE_SIZE, this.TILE_SIZE);
+    // Wave lines
+    this.ctx.fillStyle = COLORS.water.highlight;
+    const waveOffset = Math.sin(this.lastTime / 500 + x) * 2;
+    this.ctx.fillRect(x, y + 10 + waveOffset, this.TILE_SIZE, 3);
+    this.ctx.fillRect(x, y + 25 - waveOffset, this.TILE_SIZE, 3);
 }
 
 renderPlayer() {
@@ -234,15 +247,36 @@ renderPlayer() {
     // Animation: alternate leg positions based on animFrame
 }
 
-// Mountain, Rice Field, Fire, Person: Similar simple patterns
+renderMountain(x, y) {
+      // Gray base of the triangle
+      this.ctx.fillStyle = '#808080'; // Gray color
+      this.ctx.beginPath();
+      this.ctx.moveTo(x, y + this.TILE_SIZE); // Bottom-left
+      this.ctx.lineTo(x + this.TILE_SIZE, y + this.TILE_SIZE); // Bottom-right
+      this.ctx.lineTo(x + this.TILE_SIZE / 2, y); // Top-center
+      this.ctx.closePath();
+      this.ctx.fill();
+
+      // White snowcap (top half of the triangle)
+      this.ctx.fillStyle = '#FFFFFF'; // White color
+      this.ctx.beginPath();
+      this.ctx.moveTo(x + this.TILE_SIZE * 0.25, y + this.TILE_SIZE * 0.5); // Left point of snowcap
+      this.ctx.lineTo(x + this.TILE_SIZE * 0.75, y + this.TILE_SIZE * 0.5); // Right point of snowcap
+      this.ctx.lineTo(x + this.TILE_SIZE / 2, y); // Top-center
+      this.ctx.closePath();
+      this.ctx.fill();
+    }
+
+// Rice Field, Fire, Person: Similar simple patterns
 ```
 
 
 ### 6️⃣ **Coding Rules**
 - Count each successful kanji submission only once.
 - Character moves one tile at a time.
-- renderPerson is essentially a static version of the renderPlayer function
+- renderPerson is essentially a static version of the renderPlayer function, but with a blue cap.
 - Replicate the environment exactly as I have instructed you to do so.
+- All of the Kanji must be rendered.
 
 The application itself has the following background style:
 
