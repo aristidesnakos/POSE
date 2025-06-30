@@ -278,7 +278,7 @@ renderMountain(x, y) {
 - Replicate the environment exactly as I have instructed you to do so.
 - All of the Kanji must be rendered.
 - Ensure the hint font is #F43D37.
-- Also ensure the Kanji counter and toggle are outside and top of the game area.
+- Also ensure the Kanji counter and toggle are outside of the game area box and above to the left and right, respectively.
 
 The application itself has the following background style:
 ```
