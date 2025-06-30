@@ -279,7 +279,7 @@ renderMountain(x, y) {
 - All of the Kanji must be rendered.
 
 The application itself has the following background style:
-
+```
 body {
     background: #1a1a2e;
     display: flex;
@@ -289,3 +289,4 @@ body {
     font-family: 'Press Start 2P', monospace;
     color: white;
 }
+```
