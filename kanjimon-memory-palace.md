@@ -30,6 +30,7 @@ The player explores a vibrant pixel world that resembles a carefully constructed
 🌳 **Environment:**
 
 - **Tile map:** 30×20 grid.
+- Tile map contains just the elemments of the game, such as the tiles and sprites.
 - Each tile type is described in section 5️⃣ by corresponding functions.
 - **Tile types:**
   - `0`: `renderGrass`
@@ -41,6 +42,7 @@ The player explores a vibrant pixel world that resembles a carefully constructed
   - `M`: `renderMountain`
   - `R`: `renderRiceField`
   - `P1`: `renderPerson` (static player sprite)
+
 
 👾 **Wild Kanji sprites:**
 
@@ -56,6 +58,7 @@ The player explores a vibrant pixel world that resembles a carefully constructed
 - Centered enlarged Kanji sprite (5× scale).
 - Pixel-art style input box
 - 3 buttons: "Capture!", "Hint", "Flee" (styled to match retro UI).
+- Hint text is in #F43D37. Hint should be below the "Capture!", "Hint", "Flee" buttons.
 - After each Kanji is captured user gets 1 point. 
 
 🖋 **UI text & labels:**
@@ -64,7 +67,6 @@ The player explores a vibrant pixel world that resembles a carefully constructed
 - White or light-colored text on dark backgrounds for readability.
 - “Kanji Captured: X/10” is located on the top left outside of the Tile map.
 - There's a toggle to show/hide the Kanji -- outside of the tile map on the top right -- same level as the Kanji counter
-- Hint text is in #F43D37.
   
 ###  3️⃣ **Game Mechanics & Flow** 
 #### 🚶 **State 1: OVERWORLD**
