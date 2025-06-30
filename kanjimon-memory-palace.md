@@ -132,6 +132,7 @@ Your list of 10 **JLPT N5 Kanji** with primary meanings — placed randomly on g
 ✅ The map design is indicated below. Place the Kanji in the exact positions instructed.
 
 // Map data (0=renderGrass, 1=renderPath, 2=renderTree, 3=renderWater, F=renderFire, SC=renderMountainSnowcap, R=renderRiceField, P1=renderPerson, U=renderPerson (user's sprite)) 
+```
 this.mapData = [
 [0,0,2,0,2,2,0,0,2,2,2,0,0,0,0,0,0,0,3,3,3,0,0,0,0,2,2,2,2,2],
 [0,0,'一',0,'二',0,0,1,0,'三',0,2,2,2,2,0,0,0,0,3,0,0,0,0,0,1,1,0,0,0],
@@ -154,8 +155,10 @@ this.mapData = [
 [0,0,0,'水',2,2,2,1,0,0,0,2,0,0,0,0,0,0,0,'F',0,0,0,0,0,0,0,0,'川',0],
 [0,0,0,0,0,0,0,0,0,0,0,'木',0,0,0,0,0,0,'火',0,0,0,0,0,0,0,0,0,0,0]
 ];
+```
 
 ### **Quick Reference:**
+```
 | Element | Position | Size | Notes |
 |---------|----------|------|-------|
 | Score | (10,10) | 12px | "Kanji Captured: X/10" |
@@ -163,7 +166,7 @@ this.mapData = [
 | Battle Kanji | Center | 5x scale | #F43D37 color |
 | Input | Below Kanji | 200x30 | Centered |
 | Buttons | Below Input | 80x40 | 10px spacing |
-
+```
 **Animations:** Kanji bob 2px (sin wave), Player legs alternate every 250ms, Fire flickers randomly.
 **Movement:** Arrow keys, tile-by-tile, boundary checks, no overlapping.
 
