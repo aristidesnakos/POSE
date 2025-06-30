@@ -38,7 +38,7 @@ The player explores a vibrant pixel world that resembles a carefully constructed
   - `3`: `renderWater`
   - `4`: `renderBuilding`
   - `F`: `renderFire`
-  - `SC`: `renderMountainSnowcap`
+  - `M`: `renderMountain`
   - `R`: `renderRiceField`
   - `P1`: `renderPerson` (static player sprite)
 
@@ -120,11 +120,10 @@ Your list of 10 **JLPT N5 Kanji** with primary meanings — placed randomly on g
 木: tree (accept wood)    
 山: mountain   
 川: river
-田: rice field 
-口: mouth        
+田: rice field   
 ```
 **Kanji Placement:**
-- Kanji characters in `mapData` (e.g., `一`, `二`, `三`, `人`, `火`, `水`, `木`, `山`, `川`, `田`, `口`) represent their initial fixed positions. These should be replaced with a generic grass tile (`0`) after initialization, and the Kanji objects themselves should be stored in a separate array with their coordinates.
+- Kanji characters in `mapData` (e.g., `一`, `二`, `三`, `人`, `火`, `水`, `木`, `山`, `川`, `田`) represent their initial fixed positions. These should be replaced with a generic grass tile (`0`) after initialization, and the Kanji objects themselves should be stored in a separate array with their coordinates.
 
 ### 5️⃣ **Exact Game Environment Description**
 
@@ -147,11 +146,11 @@ this.mapData = [
 [0,0,2,1,0,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [0,0,2,1,0,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'R','R',0,0,0],
 [0,0,2,1,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'田','R',0,0,0],
-[0,0,2,2,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,0,'SC',0,0,0,0,'R','R',0,0,0],
-[0,0,3,3,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,'山',0,0,0,口,2,2,2,2,2,2],
+[0,0,2,2,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,0,'M',0,0,0,0,'R','R',0,0,0],
+[0,0,3,3,2,0,2,1,2,2,2,0,0,0,0,0,0,0,0,'山',0,0,0,0,2,2,2,2,2,2],
 [0,0,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-[0,0,0,0,3,3,3,1,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,2,2,2,2,2,2],
-[0,0,0,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3],
+[0,0,0,0,3,3,3,1,2,2,2,2,2,2,2,2,2,0,0,0,0,0,0,3,2,2,2,2,2,2],
+[0,0,0,0,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,3],
 [0,0,0,'水',2,2,2,1,0,0,0,2,0,0,0,0,0,0,0,'F',0,0,0,0,0,0,0,0,'川',0],
 [0,0,0,0,0,0,0,0,0,0,0,'木',0,0,0,0,0,0,'火',0,0,0,0,0,0,0,0,0,0,0]
 ];
