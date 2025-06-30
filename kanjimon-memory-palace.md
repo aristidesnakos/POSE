@@ -8,13 +8,13 @@ Design a self-contained **retro 2D pixel-art game**, inspired by the aesthetic o
 The player explores a vibrant pixel world that resembles a carefully constructed memory palace and captures **wild Kanji** by correctly identifying their English meanings.
 
 📦 **Technical requirement:** 
-➡ Entire game in a single HTML file with embedded CSS + JavaScript (no external libraries). 
-➡ Uses `<canvas>` 2D rendering context.
-➡ **Canvas dimensions:** 960x640 pixels (30 tiles wide x 32px, 20 tiles high x 32px).
-➡ **TILE_SIZE:** 32 pixels.
-➡ **Game loop:** 60 FPS using `requestAnimationFrame`.
-➡ **Animation timing:** Kanji bob every 500ms.
-- Follow the exact grid layout specified.
+1. Entire game in a single HTML file with embedded CSS + JavaScript (no external libraries). 
+2. Uses `<canvas>` 2D rendering context.
+3. **Canvas dimensions:** 960x640 pixels (30 tiles wide x 32px, 20 tiles high x 32px).
+4. **TILE_SIZE:** 32 pixels.
+5. **Game loop:** 60 FPS using `requestAnimationFrame`.
+6. **Animation timing:** Kanji bob every 500ms.
+7. Follow the exact grid layout specified.
 
 ###  2️⃣ **Visuals & Aesthetics**
 
