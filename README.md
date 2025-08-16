@@ -12,5 +12,12 @@ It asked for head to head comparisons of OpenAI, Gemini, and Anthropic using its
 
 Also, this was an opportunity to finally launch a set of practical evaluations with immediate usage potential.
 
-# Collaborations?
-Open to them.
+# Target Audience
+
+- Software enthusiasts
+- People that are curious about LLM capabilities
+- People surveying LLM limitations
+
+# Folder Structure
+1. [Kanjimon Memory Palace](/kanjimon-memory-palace.md) is the description of a basic Japanese language learning game. It can be adapted to other ideogram languages, such as Chinese or Korean, etc.
+2. [Break Even Analysis Tool](/break-even-analysis-tool.md) is the description for a basic financial metric, namely, when does one break even.
