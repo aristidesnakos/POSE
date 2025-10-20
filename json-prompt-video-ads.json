@@ -1,0 +1,93 @@
+{
+  "scene_summary": "Simple scene: Woman harvesting olives with a pole tool in a Mediterranean grove. Gentle wind through trees. Clean transition to AGGELIS heart-shaped bottle. No dialogue - only natural sounds.",
+  "character": {
+    "woman": {
+      "type": "Mediterranean olive grove worker, mid-40s",
+      "personality": ["peaceful", "skilled", "connected to nature"],
+      "features": {
+        "movement": "confident use of long pole harvester, reaching up into tree branches, skilled maneuvering of harvesting tool",
+        "wardrobe": "practical work clothes - dark colored shirt, casual work pants, focused expression, professional harvesting technique"
+      }
+    }
+  },
+  "environment": {
+    "location": "ancient Mediterranean olive grove",
+    "time_of_day": "golden hour - late afternoon with warm, honey-colored light",
+    "key_objects": {
+      "olive_trees": "gnarled, centuries-old olive trees with silver-green leaves",
+      "olives": "plump, dark purple and green olives hanging from branches",
+      "harvest_basket": "traditional woven basket for collecting olives",
+      "olive_oil_bottles": "distinctive heart-shaped AGGELIS glass bottle with golden-green olive oil and cork stopper",
+      "natural_elements": "dappled sunlight, gentle breeze moving through leaves"
+    }
+  },
+  "action_sequence": [
+    {
+      "camera": "wide shot",
+      "description": "Woman in olive grove using pole harvester, wind through trees."
+    },
+    {
+      "camera": "close-up",
+      "description": "Hands operating harvester tool, olives falling."
+    },
+    {
+      "camera": "medium shot", 
+      "description": "Peaceful grove with gentle wind movement."
+    },
+    {
+      "camera": "product transition",
+      "description": "Simple cut to AGGELIS heart-shaped bottle."
+    },
+    {
+      "camera": "hero shot",
+      "description": "AGGELIS bottle with soft grove background."
+    }
+  ],
+  "visuals": {
+    "lighting": ["golden hour sunlight", "dappled tree shadows", "warm Mediterranean glow", "soft product lighting"],
+    "style": "clean, simple cinematography with natural transitions",
+    "color_palette": "warm golds and honey tones, silver-green olive leaves, earth browns, elegant bottle greens and golds"
+  },
+  "audio": {
+    "music": "simple Mediterranean ambient background",
+    "ambient": [
+      "gentle wind through olive trees",
+      "rustling leaves", 
+      "soft footsteps on earth",
+      "subtle harvesting tool sounds",
+      "olives dropping into collection area",
+      "natural grove atmosphere",
+      "distant birds"
+    ],
+    "dialogue": {
+      "no_dialogue": "Scene relies entirely on natural sounds and visual storytelling"
+    }
+  },
+  "render_settings": {
+    "negative_prompt": {
+      "exclude": [
+        "industrial farming equipment",
+        "heavy industrial machinery",
+        "artificial lighting",
+        "plastic containers",
+        "rushed harvesting",
+        "damaged or diseased olives",
+        "harsh shadows",
+        "artificial colors",
+        "competing olive oil brands",
+        "non-Mediterranean settings",
+        "synthetic materials",
+        "urban backgrounds",
+        "poor weather conditions",
+        "unnatural hand movements",
+        "modern clothing on worker"
+      ]
+    }
+  },
+  "brand_message": {
+    "product_feature": "AGGELIS - Premium olive oil in distinctive heart-shaped bottles, connecting skilled Mediterranean harvesting to exceptional quality.",
+    "emotional_connection": "From skilled harvest to your heart - experience the pure tradition and authentic craft in AGGELIS olive oil.",
+    "target_audience": "Premium food enthusiasts and consumers who value traditional, artisanal Mediterranean products",
+    "call_to_action": "Discover AGGELIS - where tradition meets heart"
+  }
+}
