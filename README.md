@@ -38,6 +38,7 @@ See [METHODOLOGY.md](METHODOLOGY.md) for details on the evaluation approach and 
 | Evaluation | Complexity | Checklist Items | What It Tests |
 |-----------|-----------|----------------|--------------|
 | [Snake Game](prompts/html-games/snake-game.md) | Medium | 15 | Game loop, collision detection, canvas rendering, localStorage |
+| [Kanjimon Memory Palace](prompts/interactive-apps/kanjimon-memory-palace.md) | Complex | 18 | Canvas game, state management, educational design, pixel art |
 
 ### Web Tools
 
