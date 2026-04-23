@@ -14,13 +14,13 @@ POSE is aimed at **frontend developers, designers, and product builders** who wa
 - Can it build a playable HTML game from scratch in one shot?
 - Can it turn a wireframe or a design brief into working, styled HTML?
 
-The evaluations live in the space between static mockups and full-stack apps: **interactive, functional, visually intentional — but self-contained** (a single HTML file or a lightweight script, with no complicated backend).
+The evaluations live in the space between static mockups and full-stack apps: **interactive, functional, visually intentional — but self-contained** (a single HTML file, with no complicated backend).
 
 ## How It Works
 
 1. Pick a prompt from the table below
 2. Copy the **Prompt** section into your AI tool (Cursor, Claude Code, ChatGPT, Lovable, Bolt.new, etc.)
-3. Open the generated output in a browser (or run it)
+3. Open the generated output in a browser
 4. Walk through the **Evaluation Checklist** — check each item pass/fail
 
 See [METHODOLOGY.md](METHODOLOGY.md) for details on the evaluation approach and scoring criteria.
@@ -29,42 +29,54 @@ See [METHODOLOGY.md](METHODOLOGY.md) for details on the evaluation approach and 
 
 ### UI Components
 
-Ship-ready interface components: landing pages, dashboards, pricing sections — the building blocks of real products.
-
 | Evaluation | Complexity | Checklist Items | What It Tests |
 |-----------|-----------|----------------|--------------|
-| [SaaS Hero Section](prompts/ui-components/hero-section.md) | Medium | 13 | Visual design, CSS animation, responsive layout, brand consistency |
-| [Pricing Table](prompts/ui-components/pricing-table.md) | Medium | 13 | Interactive toggle, conditional rendering, visual hierarchy |
+| [SaaS Hero Section](prompts/ui-components/hero-section.md) | Medium | 13 | Visual design, CSS animation, responsive layout |
 
 ### HTML Games
-
-Self-contained browser games: the ultimate test of logic, physics, and interactive design in a single file.
 
 | Evaluation | Complexity | Checklist Items | What It Tests |
 |-----------|-----------|----------------|--------------|
 | [Snake Game](prompts/html-games/snake-game.md) | Medium | 15 | Game loop, collision detection, canvas rendering, localStorage |
-| [Flappy Bird Clone](prompts/html-games/flappy-bird.md) | Medium | 14 | Physics simulation, procedural generation, multi-state management |
-| [Kanjimon Memory Palace](prompts/interactive-apps/kanjimon-memory-palace.md) | Complex | 18 | Canvas game, state management, educational design |
 
 ### Web Tools
 
-Functional mini-apps with real utility — calculators, dashboards, data visualizations.
-
 | Evaluation | Complexity | Checklist Items | What It Tests |
 |-----------|-----------|----------------|--------------|
-| [Break-Even Calculator](prompts/web-tools/break-even-calculator.md) | Medium | 10 | Image interpretation, chart rendering, financial logic |
+| [Break-Even Calculator](prompts/web-tools/break-even-calculator.md) | Medium | 10 | Chart rendering, financial logic, image interpretation |
 
-### Scraping & Data Pipelines
+More evaluations are planned and will be added incrementally — pricing tables, dashboard widgets, more games, and data visualizations.
 
-Backend-leaning evaluations for teams that need data extraction and processing skills.
+## Running with EvalPulse
 
-| Evaluation | Complexity | Checklist Items | What It Tests |
-|-----------|-----------|----------------|--------------|
-| [Job Listings Scraper](prompts/scraping-pipelines/crawl4ai-job-listings.md) | Medium | 10 | Structured extraction, pagination, LLM strategy |
-| [E-commerce Price Monitor](prompts/scraping-pipelines/crawl4ai-ecommerce-prices.md) | Medium | 10 | CSS extraction, data normalization, CSV output |
-| [News Aggregator](prompts/scraping-pipelines/crawl4ai-news-aggregator.md) | Complex | 11 | Multi-source concurrent crawling, deduplication |
-| [Real Estate Listings](prompts/scraping-pipelines/crawl4ai-real-estate.md) | Medium | 10 | Messy data handling, dual output formats |
-| [Competitor Monitor](prompts/scraping-pipelines/crawl4ai-competitor-monitor.md) | Complex | 11 | Real-world HTML diversity, date parsing, reporting |
+POSE evaluations can be run automatically against multiple models using [EvalPulse](https://github.com/aristidesnakos/model-evals-framework) — a lightweight pipeline that scores LLM outputs with dual-judge evaluation and generates comparison reports.
+
+The `evals/` folder contains ready-to-use EvalPulse suites:
+
+| Suite | Evaluations included |
+|-------|---------------------|
+| [`evals/pose-ui.json`](evals/pose-ui.json) | SaaS Hero Section, Snake Game |
+
+**Quick start:**
+
+```bash
+# Clone EvalPulse
+git clone https://github.com/aristidesnakos/model-evals-framework
+cd model-evals-framework
+
+# Install and configure
+pip install -r requirements.txt
+cp .env.example .env  # add your OpenRouter API key
+
+# Copy the POSE suite into EvalPulse
+cp /path/to/POSE/evals/pose-ui.json evals/
+
+# Dry-run to verify the pipeline
+python evalpulse.py --dry-run --suite pose_ui
+
+# Full evaluation across all enabled models
+python evalpulse.py --run-eval --suite pose_ui --dashboard
+```
 
 ## What Makes a Great POSE Evaluation?
 
@@ -74,8 +86,6 @@ The best evaluations are tasks where the bar is immediately obvious:
 - **You can use it** — click buttons, play the game, enter data
 - **You can compare it** — side-by-side with the spec or your mental model of "good"
 
-UI components and HTML games meet all three criteria. You know within 10 seconds whether the model produced something shippable.
-
 ## Contributing
 
 Want to add an evaluation? Use the [prompt template](templates/prompt-template.md) and submit a PR. Each evaluation needs:
@@ -83,14 +93,14 @@ Want to add an evaluation? Use the [prompt template](templates/prompt-template.m
 - An evaluation checklist with 5-15 concrete pass/fail items
 - Notes for evaluators covering common failure modes and what "close enough" means
 
-Good candidates: landing page sections, dashboard widgets, data visualizations, browser games, interactive forms, animation showcases.
+Good candidates: landing page sections, dashboard widgets, browser games, interactive forms, data visualizations.
 
 ## Related Projects
 
+- [EvalPulse](https://github.com/aristidesnakos/model-evals-framework) — Automated multi-model evaluation pipeline (run POSE evals at scale)
 - [Inspect AI](https://github.com/UKGovernmentBEIS/inspect_ai) — Comprehensive eval infrastructure (different approach — POSE is deliberately simpler)
 - [Promptfoo](https://github.com/promptfoo/promptfoo) — Systematic prompt testing CLI
 - [Vibe Code Bench](https://www.vals.ai/benchmarks/vibe-code) — Automated app generation evaluation
-- [Crawl4AI](https://github.com/unclecode/crawl4ai) — The scraping library used in our pipeline evaluations
 
 ## License
 
