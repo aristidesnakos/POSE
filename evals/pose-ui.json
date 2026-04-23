@@ -1,0 +1,52 @@
+{
+  "suite_name": "pose_ui",
+  "description": "POSE UI/UX one-shot evaluation suite. Tests whether a model can produce shippable frontend output — a SaaS hero section and a Snake game — from a single prompt. Outputs are self-contained HTML files evaluated for completeness, correctness, and visual quality.",
+  "runs_per_test": 2,
+  "scoring_weights": {
+    "completeness": 0.35,
+    "accuracy": 0.30,
+    "format": 0.20,
+    "domain_relevance": 0.10,
+    "clarity": 0.05
+  },
+  "test_cases": [
+    {
+      "id": "tc_001",
+      "name": "SaaS Hero Section",
+      "category": "ui-component",
+      "prompt": "Build a modern SaaS landing page hero section as a single self-contained HTML file with embedded CSS and JavaScript. No external libraries or frameworks.\n\n### Design Requirements\n\n**Layout (top to bottom):**\n1. **Navigation bar** — Logo on the left (\"Flowly\"), nav links in the center (Features, Pricing, Docs, Blog), and a \"Get started free\" CTA button on the right. Sticky on scroll.\n2. **Hero content** — Centered, two-column layout:\n   - Left: Headline, subheadline, two CTA buttons, and social proof\n   - Right: Animated product UI mockup (browser chrome + dashboard screenshot using pure CSS/div elements — no images)\n3. **Social proof strip** — Logos of \"trusted by\" companies rendered as styled text badges (e.g., Stripe, Notion, Linear, Vercel, Figma) in a muted row beneath the hero\n\n**Copy:**\n- Headline: \"Ship faster with AI-powered workflows\" (bold, large, gradient text)\n- Subheadline: \"Flowly connects your tools, automates your busywork, and keeps your team in sync — so you can focus on what matters.\"\n- Primary CTA: \"Start for free →\" (filled button)\n- Secondary CTA: \"Watch demo\" (ghost button with play icon)\n- Social proof text: \"Loved by 12,000+ teams worldwide ★★★★★\"\n\n**Visual Style:**\n- Dark background: `#0a0a0f`\n- Accent gradient: `#7c3aed` → `#2563eb` (purple to blue)\n- Headline gradient text using the accent gradient\n- Card/surface color: `#12121a`\n- Border color: `rgba(255,255,255,0.08)`\n- Body text: `#94a3b8`\n- White text for headings\n- Font: system-ui stack (no external fonts)\n\n**Product mockup (right column):**\n- Browser chrome (three colored dots, URL bar) in a dark rounded card\n- Inside: A simplified dashboard UI made of divs:\n  - A sidebar with colored icon blocks and text stubs\n  - A main area with a fake bar chart (5 bars of varying heights using divs)\n  - Two stat cards at the top right showing \"Tasks Done: 1,284\" and \"Time Saved: 47h\"\n- The whole card should have a subtle purple glow (box-shadow)\n- Animate the card with a slow float up/down animation (3s ease-in-out infinite)\n\n**Navigation behavior:**\n- On scroll past 80px, the navbar adds a backdrop blur and border-bottom\n- \"Get started free\" button uses the accent gradient as background\n\n**Animations:**\n- Headline words fade in with a stagger (0.1s delay per word)\n- CTA buttons have a hover lift effect (translateY(-2px))\n- Mockup card floats (keyframe animation)\n\n**Responsive:**\n- At < 768px, switch to single-column (content stacked above mockup)\n- Nav links collapse (just show logo + CTA button at mobile)",
+      "expected_format": "text",
+      "validation": {
+        "must_contain": ["<!DOCTYPE html>", "Flowly", "Start for free", "nav", "linear-gradient"],
+        "min_length": 2000
+      },
+      "reference_answer": "A complete self-contained HTML file that: renders a sticky dark navbar with logo and CTA; shows a two-column hero with gradient headline text, two CTA buttons, and a social proof strip; includes a CSS-only product mockup (browser chrome with a fake dashboard) with a float animation; collapses to single column on mobile; uses no external libraries.",
+      "scoring_criteria": {
+        "completeness": "All major sections are present: navbar, two-column hero, product mockup, social proof strip. Both CTA buttons exist and are visually distinct.",
+        "accuracy": "Gradient text is implemented correctly (background-clip: text). The mockup is built from CSS/HTML divs only — no img tags. The floating animation uses a CSS keyframe.",
+        "format": "Valid, self-contained HTML file with embedded CSS and JS. No external stylesheet or framework CDN links. File opens in a browser without errors.",
+        "domain_relevance": "The output looks like a real SaaS product landing page — dark theme, clear value proposition, professional visual hierarchy.",
+        "clarity": "Code is readable and structured — not a single minified blob. CSS and JS are organized in their respective style and script tags."
+      }
+    },
+    {
+      "id": "tc_002",
+      "name": "Snake Game",
+      "category": "html-game",
+      "prompt": "Build a fully playable Snake game as a single self-contained HTML file with embedded CSS and JavaScript. No external libraries.\n\n### Game Specifications\n\n**Canvas:**\n- Size: 600×600 pixels\n- Grid: 20×20 cells (each cell is 30×30 pixels)\n- Background: `#0a0a0f` (very dark)\n- Grid lines: subtle `rgba(255,255,255,0.03)` to give a faint grid texture\n\n**Snake:**\n- Head: `#7c3aed` (purple)\n- Body segments: gradient from `#5b21b6` (near head) to `#2563eb` (near tail)\n- Rounded corners on each segment\n\n**Food:**\n- A pulsing red circle (`#ef4444`) centered in a random empty cell\n\n**Game loop:**\n- Target: 10 moves per second (100ms tick interval)\n- Arrow keys control direction\n- Snake cannot reverse direction\n\n**Collision:**\n- Wall collision: snake hits canvas edge → game over\n- Self collision: snake head overlaps any body segment → game over\n\n**Scoring:**\n- Eating food: +10 points\n- Snake grows by 1 segment when food is eaten\n- High score persists in `localStorage` across page refreshes\n\n**UI (outside the canvas):**\n- Title: \"🐍 Snake\" above the canvas\n- Score display: \"Score: 0\" and \"Best: 0\" updated in real time\n- Start screen overlay: \"Press Space or Enter to start\"\n- Game over overlay: \"Game Over\" + final score + \"Press Space or Enter to restart\"\n\n**Speed increase:**\n- Every 5 foods eaten, speed increases slightly (minimum 50ms tick)\n\n**States:** IDLE → PLAYING → GAME_OVER",
+      "expected_format": "text",
+      "validation": {
+        "must_contain": ["<!DOCTYPE html>", "canvas", "localStorage", "requestAnimationFrame", "keydown"],
+        "min_length": 2000
+      },
+      "reference_answer": "A complete self-contained HTML file containing a playable Snake game. The snake moves on a 600x600 canvas, eats food to grow, dies on wall or self-collision, shows score and best score, persists high score in localStorage, has start and game-over states with keyboard controls, and increases speed as the score grows.",
+      "scoring_criteria": {
+        "completeness": "All core game features are implemented: snake movement, food spawning, eating/growing, wall collision, self-collision, score tracking, high score in localStorage, start/game-over states, speed progression.",
+        "accuracy": "Game mechanics are correct: snake cannot reverse direction, food never spawns on the snake body, self-collision is detected accurately, score increments by exactly 10 per food.",
+        "format": "Valid self-contained HTML file. Game runs without errors in a browser. No external libraries. Canvas is present and used for rendering.",
+        "domain_relevance": "The output is a recognizable, playable Snake game — not just a canvas with random movement. The core loop (move, eat, grow, die) works as expected.",
+        "clarity": "Game state machine is clear. Key functions (update, draw, handleInput) are identifiable. Code does not produce console errors during normal gameplay."
+      }
+    }
+  ]
+}
